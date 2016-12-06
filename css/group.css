@@ -43,7 +43,7 @@ body {
 
 /* Jumbotron */
 .jumbotron {
-  text-align: center;
+  text-align: left;
   border-bottom: 1px solid #e5e5e5;
 }
 .jumbotron p {
@@ -54,6 +54,35 @@ body {
     padding-bottom: 10px;
 }
 
+
+
+/* Front Page Introduction */
+.introduction-container {
+  
+  padding-top: 18px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #e5e5e5;
+  overflow: auto;
+
+}
+
+.introduction-thumb {
+    float: left;
+}
+.introduction-thumb img {
+    display: block;
+    width: 180px;
+    height: 180px;
+}
+.introduction-content {
+    margin-left: 210px;    
+}
+.introduction-content p {
+  margin: 10px 10px 0px 0px;  
+  font-size: 15px;
+}
 /* Group logo */
 #logo {
     width: 154px;
@@ -62,7 +91,7 @@ body {
 }
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
   .header,
   .footer {
@@ -77,10 +106,17 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+  .introduction-container {
+    border-bottom: 0;
+  }
+  .introduction-thumb {
+  }
+  .introduction-content {
+  }
 }
 
 /* Slightly better-looking header on mobile. */
-@media screen and (max-width: 767px) {
+@media only screen and (max-width: 600px) {
     .nav-pills {
         display: block;
         margin: 0 auto 1em;
@@ -89,6 +125,14 @@ body {
         display: block;
         clear: both;
         margin: 1em auto;
+    }
+    .introduction-container {
+      border-bottom: 0;
+    }
+    .introduction-thumb {
+    }
+    .introduction-content {
+      margin-left: 0px;    
     }
 }
 
@@ -124,3 +168,4 @@ ul.news .bloglink a {
     float: right;
     margin: 0 0 1em 1em;
 }
+

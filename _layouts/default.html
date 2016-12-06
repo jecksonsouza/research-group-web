@@ -2,47 +2,53 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>{{ site.name }}: {{ page.title }}</title>
+        <title>{{ site.name }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="{{ site.base }}/css/bootstrap.min.css" rel="stylesheet">
-        <link href="{{ site.base }}/css/group.css" rel="stylesheet">
+        <link href="{{ site.base }}{{ page.baseurl }}/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ site.base }}{{ page.baseurl }}/css/group.css" rel="stylesheet">
         <link rel="alternate" type="application/atom+xml" title="Atom"
-            href="{{ site.base }}/blog/blog.xml">
+            href="{{ site.base }}{{ page.baseurl }}/blog/blog.xml">
     </head>
     <body>
         <div class="container">
           <div class="header">
             <ul class="nav nav-pills pull-right">
-              {% assign shorturl = page.url | replace:'index.html','' %}
+              {% assign shorturl = page.url | replace:'index.html','' | replace:'/~jdsouza','' %}
               {% for item in site.navigation %}
-                <li {% if item.link == shorturl %}class="active"{% endif %}>
-                  <a href="{{ site.base }}{{ item.link }}">
+              {% assign item_link = item.link | replace:'/~jdsouza','' | replace:'.html','' %}
+                <li {% if item_link == shorturl %}class="active"{% endif %}>
+                  <a href="{{ site.base }}{{ page.baseurl }}{{ item.link }}">
                     {{ item.title }}
                   </a>
                 </li>
               {% endfor %}
             </ul>
-            <a href="{{ site.base }}/">
+            <!-- <a href="{{ site.base }}/">
                 <img src="{{ site.base }}/img/logo.png"
                     srcset="{{ site.base }}/img/logo@2x.png 2x"
                     alt="Awesome" id="logo">
-            </a>
+            </a> -->
           </div>
 
           {% comment %}Liquid is sort of terrible! I think "!= true" is the
           only way to do negation?{% endcomment %}
           {% if page.notitle != true %}
-          <h2>{{ page.title }}</h2>
+          <h3>{{ page.title }}</h3>
           {% endif %}
 
           {{ content }}
 
           <div class="footer">
             <p>
-              <a href="http://dept.example.edu/">Illustrious Department</a>
+              <a href="http://www.inf.ufrgs.br/site/en/">Instituto de Informática</a>
               at the
-              <a href="http://example.edu/">University of
-                Example</a>
+              <a href="http://www.ufrgs.br/english/home">Universidade Federal do Rio Grande do Sul</a>
+            </p>
+            <p>
+              Powered by <a href="https://jekyllrb.com/" target="JEKYLL">Jekyll</a>
+            </p>
+            <p>
+              Template by <a href="https://github.com/uwsampa/research-group-web" target="UWSAMPA">uwsampa</a>
             </p>
           </div>
 
@@ -50,6 +56,6 @@
 
         <!-- Support retina images. -->
         <script type="text/javascript"
-            src="{{ site.base }}/js/srcset-polyfill.js"></script>
+            src="{{ site.base }}{{ page.baseurl }}/js/srcset-polyfill.js"></script>
     </body>
 </html>
