@@ -1,0 +1,33 @@
+<table class="table">
+<tbody>
+	{%- set prev_year = 1900 %}
+	{%- for entry in entries %}
+	{% if loop.index > 3 %} {% break %} {% endif %}
+	<tr>
+		<td class="publication">
+			<span class="pubtitle">
+				{%- set url = entry|main_url %}
+				{%- if url %}
+				<img src="img/pdficon_small.png" width="16"
+					height="16" alt="PDF" />
+				<a href="{{ url|escape }}">{{ entry|title }}</a>.
+				{%- else %}
+				{{ entry|title }}.
+				{%- endif %}
+			</span><br />
+			<span class="authors">
+				{{ entry.persons['author']|author_list }}.
+			</span><br />
+			<span class="venuetype">{{ entry|venue_type -}}</span><span class="venue">{{ entry|venue -}}</span>.
+			<br />
+			
+		</td>
+	</tr>
+	{%- endfor %}
+	<tr>
+		<td class="publication">
+			<a href="publications.html">See all publications</a>
+		</td>
+	</tr>
+</tbody>
+</table>
